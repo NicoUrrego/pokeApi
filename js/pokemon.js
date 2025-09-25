@@ -1,11 +1,20 @@
 async function Pokemon(id){
 
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon/"+id);
-    const data = await res.json();
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${parametro}`);
+        const data = await res.json();
 
     var root = document.getElementById("root");
+
+    let tipoPoke= "";
+    for(let i=0;i < data.types.length; i++){
+
+        tipoPoke += `<span>${data.types[i].type.name}</span>`;
+    }
+
     root.innerHTML = `<div class="pokemon"></div>`
-    data.forms[0].name
+    
+
+
 }
 
 Pokemon(5)
