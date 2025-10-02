@@ -1,12 +1,41 @@
+function buscadorfuncion(sza){
+    if(sza.length >= 3){
+        const filtrados = [];
+        for (let i = 0; i < pokemones.length; i++) {
+            const nombre = pokemones[i].name.toLowerCase();
+            if (nombre.includes(sza.toLowerCase())) {
+                filtrados.push(pokemones[i]);
+            }
+        }
+        let listaHTML = generarLista(filtrados)
+        document.getElementById("la-lista").innerHTML = listaHTML;
+    }else{
+        let listaHTML = generarLista(pokemones)
+        document.getElementById("la-lista").innerHTML = listaHTML;
+    }
+}
+
+function generarLista(arraypokemones) {
+    let listaHTML = "";
+    for (let i = 0; i < arraypokemones.length; i++) {
+        let id = arraypokemones[i].url.split("/")[6];
+        listaHTML += `
+        <div class="c-lista-pokemon poke-${id}" onclick="Pokemon('${id}')">
+            <p>#${id}</p>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png" width="auto" height="60" loading="lazy" alt="${arraypokemones[i].name}">
+            <p>${arraypokemones[i].name}</p>
+        </div>`;
+    }
+
+    return listaHTML;
+}
+
+
 function buscadorfuncion(xd){
 
 console.log(xd)
 }
 
-function FiltroConexion(algo){
-
-    alert(algo)
-}
 
 function Home(){
 
@@ -44,8 +73,10 @@ function Home(){
     }
 
     //contenedor
-    var contenedorPokes = createElement("section")
-    contenedorPokes.id = "la_lista"
+    const listaHTML = generarLista(pokemones)
+    var contenedorPokes = document.createElement("section")
+    contenedorPokes.id = "la-lista"
+    contenedorPokes.innerHTML = listaHTML
     
 
     document.getElementById("root").appendChild(buscador)
