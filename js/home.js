@@ -9,6 +9,7 @@ function buscadorfuncion(sza){
         }
         let listaHTML = generarLista(filtrados)
         document.getElementById("la-lista").innerHTML = listaHTML;
+
     }else{
         let listaHTML = generarLista(pokemones)
         document.getElementById("la-lista").innerHTML = listaHTML;
@@ -28,12 +29,6 @@ function generarLista(arraypokemones) {
     }
 
     return listaHTML;
-}
-
-
-function buscadorfuncion(xd){
-
-console.log(xd)
 }
 
 
